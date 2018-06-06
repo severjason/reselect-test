@@ -1,21 +1,22 @@
 // @flow
 import * as React from 'react';
 import { connect } from 'react-redux';
-import type { ListItem } from "flow/types";
+import type { ListProps } from "flow/types";
 import { BasicList } from 'components/index';
+import { bindActionCreators } from "redux";
+import * as actions from "../../app_redux/actions";
 
-type Props = {
-  list: Array<ListItem>,
-  color: string,
-}
-
-const SelectedList = (props: Props) => (props.list.length) ? <BasicList color='olive' {...props}/> : null;
-
+const SelectedList = (props: ListProps) => (props.list.length)
+  ? <BasicList mainList={false} title='Selected items' color='blue' {...props}/>
+  : null;
 
 export default connect(
-  ({selectedList}) => ({
+  ({selectedList, totalSelectedPrice}) => ({
     list: selectedList,
+    totalSelectedPrice,
   }),
-  null
+  dispatch => ({
+    actions: bindActionCreators(actions, dispatch),
+  })
 )(SelectedList);
 
