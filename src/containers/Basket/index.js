@@ -2,23 +2,26 @@
 
 import * as React from 'react';
 import { Segment } from 'semantic-ui-react'
-import TotalPriceSelector from "app_redux/selector/index";
+import TotalSelector from "app_redux/selector/index";
 import { connect } from "react-redux";
 
 type Props = {
-  totalSelectedPrice: number,
+  total: {
+    price: number,
+    quantity: number,
+  }
 }
 
-const Basket = (props: Props) => (props.totalSelectedPrice) ? (
+const Basket = (props: Props) => (props.total.price) ? (
   <Segment>
-    Total price: {props.totalSelectedPrice} USD
+    Total price: {props.total.price} USD, items: {props.total.quantity}
   </Segment>
 ):null;
 
 
 export default connect(
   (state) => ({
-    totalSelectedPrice: TotalPriceSelector(state)
+    total: TotalSelector(state)
   }),
   null
 )(Basket);

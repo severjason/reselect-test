@@ -10,7 +10,10 @@ export type ListItem = {
 
 export type ListProps = {
   list: Array<ListItem>,
-  totalSelectedPrice: number,
+  total: {
+    price: number,
+    quantity: number,
+  },
   color: string,
   title: string,
   mainList: boolean,

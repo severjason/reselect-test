@@ -34,7 +34,7 @@ const BasicList = (props: ListProps & BasicListProps) => {
     <Table.Footer>
       <Table.Row>
         <Table.HeaderCell colSpan='2'><strong>Total</strong></Table.HeaderCell>
-        <Table.HeaderCell  colSpan='2'><strong>{props.totalSelectedPrice} USD</strong></Table.HeaderCell>
+        <Table.HeaderCell  colSpan='2'><strong>{props.total.price} USD</strong></Table.HeaderCell>
       </Table.Row>
     </Table.Footer>
   ) : null;

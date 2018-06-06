@@ -5,7 +5,7 @@ import type { ListProps } from "flow/types";
 import { BasicList } from 'components/index';
 import { bindActionCreators } from "redux";
 import * as actions from "app_redux/actions";
-import TotalPriceSelector from 'app_redux/selector';
+import TotalSelector from 'app_redux/selector';
 
 const SelectedList = (props: ListProps) => (props.list.length)
   ? <BasicList mainList={false} title='Selected items' color='blue' {...props}/>
@@ -14,7 +14,7 @@ const SelectedList = (props: ListProps) => (props.list.length)
 export default connect(
   (state) => ({
     list: state.selectedList,
-    totalSelectedPrice: TotalPriceSelector(state)
+    total: TotalSelector(state)
   }),
   dispatch => ({
     actions: bindActionCreators(actions, dispatch),
