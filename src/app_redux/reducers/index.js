@@ -5,15 +5,13 @@ import * as helpers from 'helpers';
 
 type State = {
   selectedList: Array<ListItem>,
-  totalSelectedPrice: number,
   list: Array<ListItem>,
 }
 
 
 const INITIAL_STATE: State = {
   selectedList: [],
-  totalSelectedPrice: 0,
-  list: helpers.generateList(10),
+  list: helpers.generateList(20),
 };
 
 function rootReducer(state: State = INITIAL_STATE, action: Action): State {
@@ -27,15 +25,11 @@ function rootReducer(state: State = INITIAL_STATE, action: Action): State {
           ...state.selectedList,
           selectedItem,
         ],
-        totalSelectedPrice: helpers.totalPrice([
-          ...state.selectedList,
-          selectedItem,
-        ]),
+
         list: [
           ...filteredList,
         ]
       } : {
-        totalSelectedPrice: helpers.totalPrice(filteredList),
         selectedList: [
           ...filteredList,
         ],

@@ -12,18 +12,10 @@ export function generateList(length: number): Array<ListItem> {
     list.push({
       id: uuid.v4(),
       index: i,
-      title: 'item' + i,
-      price: getRandomInt(1, 100) ,
+      title: 'item' + i + 1,
+      price: getRandomInt(1, 100),
       rating: getRandomInt(1, 10),
     })
   }
   return list;
-}
-
-export function totalPrice(list: Array<ListItem>): number {
-  let sum = 0;
-  for (let item of list) {
-    sum += item.price;
-  }
-  return sum;
 }
