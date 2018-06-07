@@ -9,12 +9,13 @@ type Props = {
   total: {
     price: number,
     quantity: number,
+    average: number,
   }
 }
 
 const Basket = (props: Props) => (props.total.price) ? (
   <Segment>
-    Total price: {props.total.price} USD, items: {props.total.quantity}
+    Total price: {props.total.price} USD, items: {props.total.quantity}, average: {props.total.average} USD
   </Segment>
 ):null;
 
